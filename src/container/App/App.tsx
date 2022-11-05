@@ -7,7 +7,6 @@ import FriesImg from '../../assets/fries.png';
 import CoffeeImg from '../../assets/Coffee.png';
 import TeaImg from '../../assets/Tea.png';
 import ColaImg from '../../assets/cola.png';
-import MilkshakeImg from '../../assets/milkshake.png';
 import OrderRightSide from "../../components/OrderRightSide/OrderRightSide";
 import OrderLeftSide from "../../components/OrderLeftSide/OrderLeftSide";
 
@@ -21,7 +20,6 @@ function App() {
     {name: 'Coffee', price: 70, image: CoffeeImg, count: 0},
     {name: 'Tea', price: 20, image: TeaImg, count: 0},
     {name: 'Cola', price: 40, image: ColaImg, count: 0},
-    {name: 'Milkshake', price: 85, image: MilkshakeImg, count: 0},
   ]);
 
   const addOrder = (image: string) => {
@@ -42,17 +40,34 @@ function App() {
         if (order.name === name) {
           return {
             ...order,
+            count: order.count = 0
+          }
+        }
+        return order;
+      })
+    )
+  };
+
+  const decrease = (name: string) => {
+    setOrders(prev => prev.map(order => {
+        if (order.name === name) {
+          return {
+            ...order,
             count: order.count - 1
           }
         }
         return order;
       })
     )
-  }
+  };
+
+  const totalPrice = orders.reduce((acc, item) => {
+    return acc += item.price * item.count
+  }, 0);
 
   return (
     <div className="container d-flex">
-      <OrderLeftSide orders={orders} remove={remove}/>
+      <OrderLeftSide orders={orders} remove={remove} decrease={decrease} totalPrice={totalPrice}/>
       <OrderRightSide orders={orders} addOrder={addOrder}/>
     </div>
   );

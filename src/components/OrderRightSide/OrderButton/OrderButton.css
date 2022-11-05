@@ -7,4 +7,13 @@
 .orderBtn {
     margin: 0;
     padding: 0;
+    width: 97%;
+}
+
+.BurgerName {
+    font-size: 20px;
+}
+
+.BurgerPrice {
+    font-weight: bold;
 }
