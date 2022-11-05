@@ -8,7 +8,10 @@ interface Props {
 
 const OrderRightSide: React.FC<Props> = ({orders, addOrder}) => {
   return (
-    <div className="border d-flex flex-row m-3 col-9">
+    <div className="border m-3 col-6 text-center">
+      <h4 className="m-3">
+        Add Items
+      </h4>
       {orders.map((order) => (
         <OrderButton
           key={Math.random()}

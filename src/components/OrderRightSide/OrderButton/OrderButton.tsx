@@ -10,10 +10,10 @@ interface Props {
 
 const OrderButton: React.FC<Props> = (props) => {
   return (
-    <button className="orderBtn btn" onClick={props.onClick}>
+    <button className="orderBtn btn d-flex align-items-center" onClick={props.onClick}>
       <img className="orderImg" alt="#" src={props.image}/>
-      <h6>{props.name}</h6>
-      <p>{props.price}</p>
+      <h6 className="m-3">{props.name}</h6>
+      <p className="m-3">{props.price}</p>
     </button>
   );
 };
